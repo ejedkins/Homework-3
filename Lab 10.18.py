@@ -72,7 +72,7 @@ class ShoppingCart:
             cost = (item.item_quantity * item.item_price)
             total_cost += cost
             return total_cost
-#getting the to total cost of items in cart
+#printing the to total cost of items in cart
     def print_total(self):
         total_cost = self.get_cost_of_cart()
         if (total_cost == 0):
@@ -91,10 +91,10 @@ class ShoppingCart:
             print('SHOPPING CART IS EMPTY')
         else:
             print('{}\'s Shopping Cart - {}'.format(self.customer_name, self.current_date))
-            print('Item Descriptions')
+            print('\nOUTPUT ITEMS DESCRIPTIONS')
             for item in self.cart_items:
                 item.print_item_description()
-
+#return what items are in the cart
     def output_cart(self):
         print('OUTPUT SHOPPING CART\n')
         new = ShoppingCart()
@@ -106,7 +106,7 @@ def print_menu(newCart):
     customer_Cart = newCart
 
     command = ' '
-
+#creating the menu the user can chooose from
     menu = ('\nMENU\n'
             'a - Add item to cart\n'
             'r - Remove item from cart\n'
@@ -114,31 +114,30 @@ def print_menu(newCart):
             'i - Output items\' descriptions\n'
             'o - Output shopping cart\n'
             'q - Quit\n')
-
+#As long as the command is not q, the loop will keep running
     while (command != 'q'):
         print(menu, end='\n')
         command = input('Choose an option:\n')
         string = ''
+        #If the command is a, an item is added to the cart
         if (command == 'a'):
             customer_Cart.add_item(string)
-
-        elif (command == 'o'):
-            customer_Cart.output_cart()
-
-        elif (command == 'i'):
-            print('\nOUTPUT ITEMS DESCRIPTIONS')
-            customer_Cart.print_decriptions()
-
-        elif (command == 'r'):
+        #If the command is r, an item is removed from the cart
+         elif (command == 'r'):
             customer_Cart.remove_item()
-
+        #If the command is c, the quantity of the item in the cart is changed
         elif (command == 'c'):
             customer_Cart.modify_item()
-
+         #If the command is i, the description of item        
+         elif (command == 'i'):
+            customer_Cart.print_decriptions()
+        #If the command is o, the amount of items in the cart are printed
+        elif (command == 'o'):
+            customer_Cart.output_cart()
         else:
             break
 
-
+#Get yhe customer name and date
 if __name__ == "__main__":
     customer_name = input("Enter customer's name:\n")
     current_date = input("Enter today's date:\n")
